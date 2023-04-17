@@ -1,0 +1,26 @@
+<div class="background">
+    <div *ngIf="success" class="success-window">
+        <h1>Account created</h1>
+        <span style="margin-bottom: 8px;">You have successfully created and activated your acoount!</span>
+        <span>You can login now :D</span>
+        <button routerLink="/login" class="back-btn">Got to Login</button>
+    </div>
+    <div *ngIf="error" class="success-window">
+        <h1>Verification failed</h1>
+        <span style="margin-bottom: 8px; color:red;">Something went wrong, if you signed up, request another Email:</span>
+        <form class="reset-form" (submit)="requestEmail()" [formGroup]="emailForm" *ngIf="!emailSend">
+            <div class="input-container">
+                <div style="position: relative;">
+                    <input formControlName="email" placeholder="Email">
+                    <img class="mail-icon" src="assets/img/mail-icon.svg">
+                    <p style="margin-bottom: 10px;" *ngIf="emailForm.get('email')!.errors && (emailForm.get('email')!.touched  || submitted)" class="error nomargin-top">Please enter a valid E-Mailadress!</p>
+                    <p style="margin-bottom: 10px;" *ngIf="!(emailForm.get('email')!.errors && (emailForm.get('email')!.touched || submitted))" class="nomargin-top error-placeholder">Placeholder</p>
+                </div>
+            </div>
+            <p style="margin-left: 0;" *ngIf="emailNotFound" class="error nomargin-top">Email not found.</p>
+            <p *ngIf="!emailNotFound" class="nomargin-top error-placeholder">Placeholder</p>
+            <button type="submit" class="back-btn">Request Email</button>
+        </form>
+        <p style="margin-bottom: 10px; color:green;" *ngIf="emailSend" class="error">Email send! Check your Emails and click on the Link.</p>
+    </div>
+</div>

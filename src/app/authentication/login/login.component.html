@@ -1,0 +1,37 @@
+<div class="background">
+    <div class="login-window">
+        <h1>Login</h1>
+        <form [formGroup]="loginForm" (submit)="onSubmit()" class="login-form">
+            <div class="input-container">
+                <div style="position: relative;">
+                    <input formControlName="email" placeholder="Email">
+                    <img class="mail-icon" src="assets/img/mail-icon.svg">
+                    <p style="margin-bottom: 10px;" *ngIf="loginForm.get('email')!.errors && (loginForm.get('email')!.touched  || submitted)" class="nomargin-top error">Please enter a valid E-Mailadress!</p>
+                    <p style="margin-bottom: 10px;" *ngIf="!(loginForm.get('email')!.errors && (loginForm.get('email')!.touched || submitted))" class="nomargin-top error-placeholder">Placeholder</p>
+                </div>
+                <div style="position: relative;">
+                    <input #inputPw formControlName="password" type="password" placeholder="Password">
+                    <img [hidden]="inputThere" class="password-icon" src="assets/img/password-icon.svg">
+                    <img (click)="showPassword = true; inputPw.type = 'text'" [hidden]="showPassword || !inputThere" style="top:11px; right: 2px; cursor:pointer;" class="password-icon" src="assets/img/pw-show-icon.svg">
+                    <img (click)="showPassword = false; inputPw.type = 'password'" [hidden]="!showPassword || !inputThere" style="height:27px; right: 3px; cursor:pointer;" class="password-icon" src="assets/img/pw-no-show-icon.svg">
+                    <p *ngIf="loginForm.get('password')!.errors && (loginForm.get('password')!.touched || submitted)" class="error nomargin-top">At least 4 characters</p>
+                    <p *ngIf="!(loginForm.get('password')!.errors && (loginForm.get('password')!.touched || submitted))" class="error-placeholder nomargin-top">Placeholder</p>
+                </div>
+            </div>
+            <div class="login-options">
+                <div class="remember-me">
+                    <span>Remember me</span>
+                    <input type="checkbox" [ngModelOptions]="{standalone: true}" [(ngModel)]="rememberMe">
+                </div>
+                <a routerLink="/reset-password">Forgot my password</a>
+            </div>
+            <p *ngIf="error" style="margin: 0; position: relative; top: 16px;" class="error">Password or Username wrong!</p>
+            <p *ngIf="!error" style="margin: 0; position: relative; top: 16px;" class="error-placeholder">Placeholder</p>
+            <button class="login-btn">Log in</button>
+        </form>
+    </div>
+    <div class="signup-container">
+        <span>Not a User yet?</span>
+        <button routerLink="/signup">Sign up</button>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+<div class="background">
+    <div class="signup-window">
+        <img src="assets/img/back-arrow.png" class="back-arrow" routerLink="/login">
+        <h1>Sign up</h1>
+        <form *ngIf="!success" class="signup-form" (submit)="onsubmit()" [formGroup]="signupForm">
+            <div class="input-container">
+                <div style="position: relative;">
+                    <input formControlName="username" placeholder="Username">
+                    <img class="username-icon" src="assets/img/name-icon.svg">
+                    <p style="margin-bottom: 10px;" *ngIf="errorUsername" class="error nomargin-top">Username already taken.</p>
+                    <p style="margin-bottom: 10px;" *ngIf="signupForm.get('username')!.errors && (signupForm.get('username')!.touched  || submitted)" class="error nomargin-top">The Username must be at least 4 characters long.</p>
+                    <p style="margin-bottom: 10px;" *ngIf="!(signupForm.get('username')!.errors && (signupForm.get('username')!.touched || submitted) || errorUsername)" class="error-placeholder nomargin-top">Placeholder</p>
+                </div>
+                <div style="position: relative;">
+                    <input formControlName="email" placeholder="Email">
+                    <img class="mail-icon" src="assets/img/mail-icon.svg">
+                    <p style="margin-bottom: 10px;" *ngIf="errorEmail" class="error nomargin-top">Email already taken.</p>
+                    <p style="margin-bottom: 10px;" *ngIf="signupForm.get('email')!.errors && (signupForm.get('email')!.touched  || submitted)" class="error nomargin-top">Please enter a valid E-Mailadress!</p>
+                    <p style="margin-bottom: 10px;" *ngIf="!(signupForm.get('email')!.errors && (signupForm.get('email')!.touched || submitted) || errorEmail)" class="nomargin-top error-placeholder">Placeholder</p>
+                </div>
+                <div style="position: relative;">
+                    <input #inputPw1 formControlName="password1" type="password" placeholder="Password">
+                    <img [hidden]="inputThere1" class="password-icon" style="cursor:auto;" src="assets/img/password-icon.svg">
+                    <img [hidden]="showPassword1 || !inputThere1" (click)="showPassword1 = true; inputPw1.type = 'text'" style="top:11px; right: 2px;" class="password-icon" src="assets/img/pw-show-icon.svg">
+                    <img [hidden]="!showPassword1 || !inputThere1" (click)="showPassword1 = false; inputPw1.type = 'password'" style="height:27px; right: 3px;" class="password-icon" src="assets/img/pw-no-show-icon.svg">
+                    <p style="margin-bottom: 10px;" *ngIf="signupForm.get('password1')!.errors && (signupForm.get('password1')!.touched || submitted)" class="error nomargin-top">At least 4 characters</p>
+                    <p style="margin-bottom: 10px;" *ngIf="!(signupForm.get('password1')!.errors && (signupForm.get('password1')!.touched || submitted))" class="nomargin-top error-placeholder">Placeholder</p>
+                </div>
+                <div style="position: relative;">
+                    <input #inputPw2 type="password" formControlName="password2" placeholder="Password">
+                    <img [hidden]="inputThere2" class="password-icon" style="cursor:auto;" src="assets/img/password-icon.svg">
+                    <img [hidden]="showPassword2 || !inputThere2" (click)="showPassword2 = true; inputPw2.type = 'text'" style="top:11px; right: 2px;" class="password-icon" src="assets/img/pw-show-icon.svg">
+                    <img [hidden]="!showPassword2 || !inputThere2" (click)="showPassword2 = false; inputPw2.type = 'password'" style="height:27px; right: 3px;" class="password-icon" src="assets/img/pw-no-show-icon.svg">
+                    <p *ngIf="signupForm.get('password2')!.errors && (signupForm.get('password2')!.touched || submitted)" class="error nomargin-top">At least 4 characters</p>
+                    <p *ngIf="!(signupForm.get('password2')!.errors && (signupForm.get('password2')!.touched || submitted))" class="error-placeholder nomargin-top">Placeholder</p>
+                </div>
+            </div>
+            <p *ngIf="errorOther" class="error">Something went wrong. Check if your passwords are the same!</p>
+            <p *ngIf="!errorOther" class="error-placeholder">Placeholder</p>
+            <button class="signup-btn">Sign up</button>
+        </form>
+        <span *ngIf="success" class="signupsuccess" style="color: green;">You have successfully created an account. We send you an email to verify your account. The Link is valid for 1 hour.</span>
+    </div>
+</div>

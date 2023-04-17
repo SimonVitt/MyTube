@@ -1,0 +1,18 @@
+<div class="background">
+    <div class="reset-window">
+        <img src="assets/img/back-arrow.png" class="back-arrow" routerLink="/login">
+        <h1>Reset Password</h1>
+        <span>Please fill in the E-Mail connected to your account and we will send you an E-Mail to reset your Password.</span>
+        <form class="reset-form" (submit)="onsubmit()" [formGroup]="emailForm">
+            <div class="input-container">
+                <div style="position: relative;">
+                    <input formControlName="email" placeholder="Email">
+                    <img class="mail-icon" src="assets/img/mail-icon.svg">
+                    <p style="margin-bottom: 10px;" *ngIf="emailForm.get('email')!.errors && (emailForm.get('email')!.touched  || submitted)" class="error nomargin-top">Please enter a valid E-Mailadress!</p>
+                    <p style="margin-bottom: 10px;" *ngIf="!(emailForm.get('email')!.errors && (emailForm.get('email')!.touched || submitted))" class="nomargin-top error-placeholder">Placeholder</p>
+                </div>
+            </div>
+            <button class="reset-btn">Send mail</button>
+        </form>
+    </div>
+</div>
