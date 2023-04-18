@@ -16,7 +16,6 @@ export class LoginComponent {
 
   error: boolean = false;
 
-  rememberMe: boolean = true;
   submitted: boolean = false;
   inputThere: boolean = false;
   showPassword: boolean = false;

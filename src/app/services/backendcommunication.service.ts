@@ -25,4 +25,12 @@ export class BackendcommunicationService {
   sendVerifyEmail(body: FormData){
     return lastValueFrom(this.http.post(this.BASE_URL + '/members/sendverifyagain/', body));
   }
+
+  refreshToken(body: string){
+    return lastValueFrom(this.http.post(this.BASE_URL + '/members/refresh/', body));
+  }
+
+  logout(body: string){
+    return lastValueFrom(this.http.post(this.BASE_URL + '/members/logout/', body));
+  }
 }

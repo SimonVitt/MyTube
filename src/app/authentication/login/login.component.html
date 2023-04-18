@@ -19,10 +19,6 @@
                 </div>
             </div>
             <div class="login-options">
-                <div class="remember-me">
-                    <span>Remember me</span>
-                    <input type="checkbox" [ngModelOptions]="{standalone: true}" [(ngModel)]="rememberMe">
-                </div>
                 <a routerLink="/reset-password">Forgot my password</a>
             </div>
             <p *ngIf="error" style="margin: 0; position: relative; top: 16px;" class="error">Password or Username wrong!</p>
