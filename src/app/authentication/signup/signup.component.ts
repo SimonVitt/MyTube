@@ -41,6 +41,7 @@ export class SignupComponent {
   onsubmit() {
     this.submitted = true;
     if (this.signupForm.valid) {
+      localStorage.clear();
       this.loadingService.setLoading(true);
       this.resetErrors();
       const formData = new FormData();

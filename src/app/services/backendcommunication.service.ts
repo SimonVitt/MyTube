@@ -2,6 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { lastValueFrom } from 'rxjs';
 
+interface RefreshTokenRequest {
+  refresh: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -26,7 +30,7 @@ export class BackendcommunicationService {
     return lastValueFrom(this.http.post(this.BASE_URL + '/members/sendverifyagain/', body));
   }
 
-  refreshToken(body: string){
+  refreshToken(body: RefreshTokenRequest){
     return lastValueFrom(this.http.post(this.BASE_URL + '/members/refresh/', body));
   }
 

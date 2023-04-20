@@ -36,6 +36,7 @@ export class LoginComponent {
   async onSubmit() {
     this.submitted = true;
     if (this.loginForm.valid) {
+      localStorage.clear();
       this.error = false;
       this.loadingService.setLoading(true);
       try {

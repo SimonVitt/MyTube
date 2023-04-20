@@ -32,8 +32,7 @@ export class AuthInterceptorInterceptor implements HttpInterceptor {
           this.refresh = true;
           const refreshToken = localStorage.getItem('refreshToken');
           if(refreshToken){
-            const body = `{"refresh": ${refreshToken}}`;
-            this.backend.refreshToken(body).then((tokens) => {
+            this.backend.refreshToken({"refresh": refreshToken}).then((tokens) => {
               const tokensAsJSON: Tokenjson = tokens as Tokenjson;
               localStorage.setItem('refreshToken', tokensAsJSON.refresh);
               localStorage.setItem('accessToken', tokensAsJSON.access);

@@ -14,7 +14,13 @@ export class AuthGuard {
       if(await this.authService.isAuthenticated()){
         return true;
       }
-      this.authService.logout();
+      try {
+        this.authService.logout();
+        localStorage.clear();
+      } catch (error) {
+        console.log(error);
+        localStorage.clear();
+      }
       return this.router.parseUrl('/login');
   }
   
