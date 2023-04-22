@@ -9,7 +9,7 @@ import { MaincontainerComponent } from './mainapp/maincontainer/maincontainer.co
 import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
-  { path: 'new-password', component: ResetPwPasswordComponent, pathMatch: 'full'},
+  { path: 'new-password/:token', component: ResetPwPasswordComponent, pathMatch: 'full'},
   { path:'account-created/:token', component: SuccessfullCreatedComponent, pathMatch: 'full'},
   { path:'reset-password', component: ResetPwComponent, pathMatch: 'full'},
   { path: 'login', component: LoginComponent, pathMatch: 'full'},

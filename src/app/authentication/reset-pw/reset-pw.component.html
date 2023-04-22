@@ -12,6 +12,9 @@
                     <p style="margin-bottom: 10px;" *ngIf="!(emailForm.get('email')!.errors && (emailForm.get('email')!.touched || submitted))" class="nomargin-top error-placeholder">Placeholder</p>
                 </div>
             </div>
+            <p *ngIf="error" style="margin: 0; position: relative;" class="error">Something went wrong! Please enter the right E-Mailadress.</p>
+            <p *ngIf="!error && !success" style="margin: 0; position: relative;" class="error-placeholder">Placeholder</p>
+            <p *ngIf="success" style="margin: 0; position: relative; color:green;" class="error">We send you an Email to reset your password.</p>
             <button class="reset-btn">Send mail</button>
         </form>
     </div>

@@ -51,11 +51,9 @@ export class SuccessfullCreatedComponent {
       const formData = new FormData();
       formData.append('email', this.emailForm.get('email')!.value);
       this.backend.sendVerifyEmail(formData).then((response) => {
-        console.log(response);
         this.emailSend = true;
         this.loadingService.setLoading(false);
       }).catch(response => {
-        console.log(response);
         this.emailNotFound = true;
         this.loadingService.setLoading(false);
       });

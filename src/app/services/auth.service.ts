@@ -30,14 +30,10 @@ export class AuthService {
   async logout() {
     try {
       const refreshToken = localStorage.getItem('refreshToken');
-      await this.backend.logout(`{"refresh": ${refreshToken}}`);
-      localStorage.removeItem('username');
-      localStorage.removeItem('email');
-      localStorage.removeItem('publicKey');
-      localStorage.removeItem('accessToken');
-      localStorage.removeItem('refreshToken');
+      localStorage.clear();
+      await this.backend.logout(refreshToken!);
     } catch (error) {
-      console.log('Logout failed')
+      console.log('Logout failed on')
     }
   }
 
@@ -76,13 +72,10 @@ export class AuthService {
   }
 
   checkTokenExpired(token: string) {
-    console.log(token);
-    debugger;
     const base64UrlPayload = token.split('.')[1];
     const base64Payload = this.base64UrlToBase64(base64UrlPayload);
-
     const expiry = (JSON.parse(window.atob(base64Payload))).exp;
-    return (Math.floor((new Date).getTime() / 1000)) >= expiry;
+    return (Math.floor((new Date).getTime() / 1000)) <= expiry;
   }
 
   base64UrlToBase64(base64Url: string) {

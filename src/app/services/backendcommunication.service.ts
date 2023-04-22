@@ -34,7 +34,20 @@ export class BackendcommunicationService {
     return lastValueFrom(this.http.post(this.BASE_URL + '/members/refresh/', body));
   }
 
-  logout(body: string){
+  logout(refreshToken: string){
+    const body = {
+      "refresh": refreshToken
+    };
     return lastValueFrom(this.http.post(this.BASE_URL + '/members/logout/', body));
   }
+
+  forgotPassword(body: FormData){
+    return lastValueFrom(this.http.post(this.BASE_URL + '/members/forgot-password/', body));
+  }
+
+  resetPassword(body: FormData){
+    return lastValueFrom(this.http.post(this.BASE_URL + '/members/reset-password/', body));
+  }
+
+  
 }

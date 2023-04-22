@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { BackendcommunicationService } from 'src/app/services/backendcommunication.service';
+import { LoadingService } from 'src/app/services/loading.service';
 
 @Component({
   selector: 'app-reset-pw-password',
@@ -15,9 +18,14 @@ export class ResetPwPasswordComponent {
   inputThere2: boolean = false;
   showPassword2: boolean = false;
 
-  constructor(private fb: FormBuilder){}
+  error: boolean = false;
+  success: boolean = false;
+
+  constructor(private fb: FormBuilder, private loading: LoadingService, private backend: BackendcommunicationService, private route: ActivatedRoute){}
 
   ngOnInit(){
+    const token: string = this.route.snapshot.params['token'];
+    localStorage.setItem('accessToken', token);
     this.resetPasswordForm = this.fb.group({
       password1: new FormControl('', [Validators.required, Validators.minLength(4)]),
       password2: new FormControl('', [Validators.required, Validators.minLength(4)])
@@ -29,8 +37,24 @@ export class ResetPwPasswordComponent {
     });
   }
 
-  onsubmit(){
+  async onsubmit(){
     this.submitted = true;
+    if(this.resetPasswordForm.valid){
+      this.loading.setLoading(true);
+      this.error = false;
+      this.success = false;
+      try {
+        const formData = new FormData();
+        formData.append('password1', this.resetPasswordForm.get('password1')!.value);
+        formData.append('password2', this.resetPasswordForm.get('password2')!.value);
+        await this.backend.resetPassword(formData);
+        localStorage.clear();
+        this.success = true;
+      } catch (error) {
+        this.error = true;
+      }
+    }
+    this.loading.setLoading(false);
   }
 
 }
