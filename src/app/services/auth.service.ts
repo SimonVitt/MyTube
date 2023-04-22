@@ -58,8 +58,8 @@ export class AuthService {
     if (!refreshToken) return false;
 
     try {
-      const tokens = await this.backend.refreshToken({"refresh": refreshToken});
-      const tokensAsJSON: Tokenjson = tokens as Tokenjson;
+      const response: any = await this.backend.refreshToken({"refresh": refreshToken});
+      const tokensAsJSON: Tokenjson = response.tokens as Tokenjson;
       if (tokensAsJSON) {
         localStorage.setItem('refreshToken', tokensAsJSON.refresh);
         localStorage.setItem('accessToken', tokensAsJSON.access);

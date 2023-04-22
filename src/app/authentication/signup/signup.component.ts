@@ -52,9 +52,9 @@ export class SignupComponent {
       this.backend.register(formData).then(response => {
         this.success  = true;
         this.loadingService.setLoading(false);
-      }).catch(async response => {
-        console.log(response);
-        this.checkError(response.error);
+      }).catch(error => {
+        console.log(error);
+        this.checkError(error.error);
         this.loadingService.setLoading(false);
       });
     }
@@ -68,6 +68,7 @@ export class SignupComponent {
   }
 
   checkError(error: any){
+    console.log(error)
     if (error.email) {
       this.errorEmail = true;
     } 
