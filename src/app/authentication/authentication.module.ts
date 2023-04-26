@@ -7,7 +7,7 @@ import { SignupComponent } from './signup/signup.component';
 import { SuccessfullCreatedComponent } from './successfull-created/successfull-created.component';
 import { ResetPwComponent } from './reset-pw/reset-pw.component';
 import { ResetPwPasswordComponent } from './reset-pw-password/reset-pw-password.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,8 +20,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     AuthenticationRoutingModule,
-    ReactiveFormsModule,
-    FormsModule
+    ReactiveFormsModule
   ]
 })
 export class AuthenticationModule { }

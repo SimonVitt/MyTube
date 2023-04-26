@@ -14,9 +14,9 @@ const routes: Routes = [
   { path:'reset-password', component: ResetPwComponent, pathMatch: 'full'},
   { path: 'login', component: LoginComponent, pathMatch: 'full'},
   { path: 'signup', component: SignupComponent, pathMatch: 'full'},
-  { path: 'main', component: MaincontainerComponent, pathMatch: 'full', canActivate: [AuthGuard]},
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: '**', redirectTo: 'login', pathMatch: 'full' }
+  { path: 'main', component: MaincontainerComponent, canActivate: [AuthGuard], loadChildren: () => import('./mainapp/mainapp.module').then(m => m.MainappModule)},
+  { path: '', redirectTo: 'main', pathMatch: 'full' },
+  { path: '**', redirectTo: 'main', pathMatch: 'full' }
 ];
 
 @NgModule({

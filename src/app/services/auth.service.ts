@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { LoadingService } from './loading.service';
 import { Logindata } from '../interfaces/logindata';
 import { Tokenjson } from '../interfaces/tokenjson';
-import * as jwt from 'jsonwebtoken';
 
 
 @Injectable({
@@ -24,7 +23,7 @@ export class AuthService {
     localStorage.setItem('publicKey', data.publickey)
     this.setTokens(data.tokens);
     this.loadingService.setLoading(false);
-    this.router.navigateByUrl('main');
+    this.router.navigateByUrl('main/videos');
   }
 
   async logout() {
@@ -32,6 +31,7 @@ export class AuthService {
       const refreshToken = localStorage.getItem('refreshToken');
       localStorage.clear();
       await this.backend.logout(refreshToken!);
+      this.router.navigateByUrl('login');
     } catch (error) {
       console.log('Logout failed on')
     }

@@ -6,7 +6,7 @@
     align-items: center;
     background-image: url('../../../assets/img/backgroundlogin.jpg');
     background-size: cover;
-    background-color: rgba(0, 0, 0, 0.7); 
+    background-color: rgba(0, 0, 0, 0.7);
     background-blend-mode: multiply;
 }
 
@@ -27,21 +27,17 @@
     align-items: center;
 }
 
-.input-container {
+input {
     width: 100%;
+    height: 36px;
+    border-radius: 10px;
+    border: 1px solid rgb(204, 204, 204);
+    font-size: 15px;
+    padding: 4px;
+    padding-left: 10px;
 
-    input {
-        width: 100%;
-        height: 36px;
-        border-radius: 10px;
-        border: 1px solid rgb(204, 204, 204);
-        font-size: 15px;
-        padding: 4px;
-        padding-left: 10px;
-
-        &:focus {
-            outline-color: rgb(39, 80, 176);
-        }
+    &:focus {
+        outline-color: rgb(39, 80, 176);
     }
 }
 
@@ -49,7 +45,7 @@
     margin: 38px 0px;
 }
 
-.mail-icon{
+.mail-icon {
     position: absolute;
     right: 4px;
     top: 12px;
@@ -57,7 +53,7 @@
     height: 22px;
 }
 
-.username-icon{
+.username-icon {
     position: absolute;
     right: 6px;
     top: 10px;
@@ -74,7 +70,7 @@
     cursor: pointer;
 }
 
-.signupsuccess{
+.signupsuccess {
     color: green;
     text-align: center;
     padding: 12px;
