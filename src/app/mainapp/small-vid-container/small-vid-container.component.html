@@ -1,0 +1,13 @@
+<div class="container">
+    <img [src]="video.thumbnail">
+    <div class="details-container">
+        <h3>{{ video.title }}</h3>
+        <div class="main-details">
+            <span>{{ video.description }}</span>
+            <div class="bottom-container">
+                <span>{{ video.author.username }}</span>
+                <span>{{ video.created_at | dateFormat }}</span>
+            </div>
+        </div>
+    </div>
+</div>

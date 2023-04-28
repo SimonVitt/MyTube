@@ -8,6 +8,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AllvideosComponent } from './allvideos/allvideos.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { MyvideosComponent } from './myvideos/myvideos.component';
+import { SmallVidContainerComponent } from './small-vid-container/small-vid-container.component';
+import { DateFormatPipe } from './pipes/date-format.pipe';
 
 
 @NgModule({
@@ -16,7 +18,9 @@ import { MyvideosComponent } from './myvideos/myvideos.component';
     UploadcontainerComponent,
     AllvideosComponent,
     NavbarComponent,
-    MyvideosComponent
+    MyvideosComponent,
+    SmallVidContainerComponent,
+    DateFormatPipe
   ],
   imports: [
     CommonModule,

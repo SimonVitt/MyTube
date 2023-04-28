@@ -1,1 +1,3 @@
-<p>allvideos works!</p>
+<div class="allvideos-container">
+    <app-small-vid-container *ngFor="let video of allVideos$ | async" [video]="video"></app-small-vid-container>
+</div>

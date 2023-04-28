@@ -16,8 +16,8 @@
                 <i class="fa fa-cloud-upload"></i> <span *ngIf="!selectedFile">Upload your Video</span> <span *ngIf="selectedFile">{{fileInput.value}}</span>
             </label>
             <input id="file-upload"  style="cursor: pointer;" #fileInput type="file" (change)="onFileSelected($event)"/>
-            <p style="margin-bottom: 10px;" *ngIf="!selectedFile && submitted" class="error nomargin-top">Please select a File!</p>
-            <p style="margin-bottom: 10px;" *ngIf="selectedFile || !submitted" class="nomargin-top error-placeholder">Placeholder</p>
+            <p style="margin-bottom: 10px;" *ngIf="(!selectedFile && submitted) || wrongFileType" class="error nomargin-top">Please select a Videofile(mp4)!</p>
+            <p style="margin-bottom: 10px;" *ngIf="(selectedFile || !submitted) && !wrongFileType" class="nomargin-top error-placeholder">Placeholder</p>
         </div>
         <p *ngIf="error" style="margin: 0; position: relative;" class="error">Something went wrong! Please try again later! Send me an Email!</p>
         <p *ngIf="!error && !success" style="margin: 0; position: relative;" class="error-placeholder">Placeholder</p>

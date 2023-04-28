@@ -14,4 +14,12 @@ export class BackendmainService {
   uploadVideo(body: FormData){
     return lastValueFrom(this.http.post(this.BASE_URL + '/api/v1/videos/', body));
   }
+
+  getAllVideos(){
+    return lastValueFrom(this.http.get(this.BASE_URL + '/api/v1/videos/'));
+  }
+
+  getMyVideos(){
+    return lastValueFrom(this.http.get(this.BASE_URL + '/api/v1/myvideos/'));
+  }
 }

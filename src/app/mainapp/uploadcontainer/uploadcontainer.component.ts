@@ -21,6 +21,8 @@ export class UploadcontainerComponent {
   descriptionError: boolean = false;
   fileError: boolean = false;
 
+  wrongFileType: boolean = false;
+
   submitted: boolean = false;
 
   constructor(private fb: FormBuilder, private backend: BackendmainService) { }
@@ -39,7 +41,7 @@ export class UploadcontainerComponent {
       const formData = new FormData();
       formData.append('title', this.uploadVideoForm.get('title')!.value);
       formData.append('description', this.uploadVideoForm.get('description')!.value);
-      formData.append('video_file', this.selectedFile);
+      formData.append('video_file_original', this.selectedFile);
       try {
         await this.backend.uploadVideo(formData);
         this.resetForm();
@@ -53,7 +55,15 @@ export class UploadcontainerComponent {
   onFileSelected(event: Event) {
     const file = (event.target as HTMLInputElement).files?.[0];
     if (file) {
-      this.selectedFile = file;
+      if(file.type === "video/mp4"){
+        this.selectedFile = file;
+        this.wrongFileType = false
+      }else{
+        this.fileError;
+        this.selectedFile = null;
+        this.fileInput.nativeElement.value = '';
+        this.wrongFileType = true;
+      }
     }
   }
 
