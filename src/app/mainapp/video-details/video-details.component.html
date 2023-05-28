@@ -1,0 +1,29 @@
+<div class="details-container">
+    <div class="details-success" *ngIf="videoDetails">
+        <div class="videodetails">
+            <div class="vid-container">
+                <video #videoPlayer width="100%" height="100%" controls>
+                    <source label="1080p" [src]="videoDetails.video_file_1080p" type="video/mp4">
+                    <source label="720p" [src]="videoDetails.video_file_720p" type="video/mp4">
+                    <source label="480p" [src]="videoDetails.video_file_480p" type="video/mp4">
+                </video>
+                <select (change)="changeResolution($event)">
+                    <option value="1080p">1080p</option>
+                    <option value="720p">720p</option>
+                    <option value="480p">480p</option>
+                </select>
+            </div>
+            <div class="written-details">
+                <h2>{{ videoDetails.title }}</h2>
+                <div>
+                    <span>{{ videoDetails.author.username }}</span>
+                    <span>{{ videoDetails.created_at | dateFormat }}</span>
+                </div>
+                <span>{{ videoDetails.description }}</span>
+            </div>
+        </div>
+        <div class="maybe-comments">
+
+        </div>
+    </div>
+</div>

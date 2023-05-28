@@ -1,2 +1,3 @@
 <router-outlet></router-outlet>
 <app-loading class="overlay" *ngIf="loading"></app-loading>
+<app-global-error class="overlay" *ngIf="showError" [errorName]="errorName" (showErrorEvent)="showError = false"></app-global-error>

@@ -6,6 +6,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    position: relative;
 }
 
 :host{
@@ -14,4 +15,21 @@
     box-sizing: border-box;
     display: flex;
     justify-content: center;
+}
+
+.pages{
+    display: flex;
+    position: absolute;
+    right: 50%;
+    left: 50%;
+    bottom: 40px;
+    width: fit-content;
+    align-items: center;
+    transform: translate(-50%, -50%);
+
+    span{
+        width: 70px;
+        display: flex;
+        justify-content: center;
+    }
 }

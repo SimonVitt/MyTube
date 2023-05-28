@@ -8,13 +8,23 @@ import { BackendmainService } from 'src/app/services/backendmain.service';
   styleUrls: ['./allvideos.component.scss']
 })
 export class AllvideosComponent {
+  currentPage: number = 1;
+  totalNumberPages!: number;
 
-  allVideos$!: Promise<VideoOverview[]>;
+  allVideos!: VideoOverview[];
 
   constructor(private backend: BackendmainService){}
 
   async ngOnInit(){
-    this.allVideos$ = this.backend.getAllVideos() as Promise<VideoOverview[]>;
+    const allVidObject = await this.backend.getAllVideos(this.currentPage) as any;
+    this.totalNumberPages = allVidObject.results.length > 0 ? Math.ceil(allVidObject.count / allVidObject.results.length) : 1;
+    this.allVideos = allVidObject.results as VideoOverview[];
+  }
+
+  async changePage(direction: string){
+    this.currentPage += (direction === 'previous' ? -1 : 1);
+    const allVidObject = await this.backend.getAllVideos(this.currentPage) as any;
+    this.allVideos = allVidObject.results as VideoOverview[];
   }
 
 }

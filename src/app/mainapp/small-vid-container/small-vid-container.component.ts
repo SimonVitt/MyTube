@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { VideoOverview } from 'src/app/interfaces/videooverview';
-import { DateFormatPipe } from 'src/app/mainapp/pipes/date-format.pipe';
+import { DateFormatPipe } from 'src/app/pipes/date-format.pipe';
 
 @Component({
   selector: 'app-small-vid-container',

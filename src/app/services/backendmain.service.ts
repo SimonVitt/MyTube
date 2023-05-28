@@ -15,11 +15,15 @@ export class BackendmainService {
     return lastValueFrom(this.http.post(this.BASE_URL + '/api/v1/videos/', body));
   }
 
-  getAllVideos(){
-    return lastValueFrom(this.http.get(this.BASE_URL + '/api/v1/videos/'));
+  getAllVideos(page: number){
+    return lastValueFrom(this.http.get(this.BASE_URL + `/api/v1/videos/?page=${page}`));
   }
 
-  getMyVideos(){
-    return lastValueFrom(this.http.get(this.BASE_URL + '/api/v1/myvideos/'));
+  getMyVideos(page:number){
+    return lastValueFrom(this.http.get(this.BASE_URL + `/api/v1/myvideos/?page=${page}`));
+  }
+
+  getVideoById(id: number){
+    return lastValueFrom(this.http.get(this.BASE_URL + `/api/v1/videos/${id}`));
   }
 }

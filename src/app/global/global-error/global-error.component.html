@@ -1,0 +1,7 @@
+<div class="background-error" (click)="closePopUp()">
+    <div class="alert dialog" (click)="stopPropagation($event)">
+        <h3>Oops! Something went wrong. Try again later!</h3>
+        <h2>{{ errorName }}</h2>
+        <button style="width: 80px;" (click)="closePopUp()">Ok</button>
+    </div>
+</div>
