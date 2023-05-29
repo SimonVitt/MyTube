@@ -11,6 +11,7 @@ import { MyvideosComponent } from './myvideos/myvideos.component';
 import { SmallVidContainerComponent } from './small-vid-container/small-vid-container.component';
 import { DateFormatPipe } from '../pipes/date-format.pipe';
 import { VideoDetailsComponent } from './video-details/video-details.component';
+import { SmallMyvidContainerComponent } from './small-myvid-container/small-myvid-container.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { VideoDetailsComponent } from './video-details/video-details.component';
     MyvideosComponent,
     SmallVidContainerComponent,
     DateFormatPipe,
-    VideoDetailsComponent
+    VideoDetailsComponent,
+    SmallMyvidContainerComponent
   ],
   imports: [
     CommonModule,

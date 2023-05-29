@@ -3,6 +3,7 @@
     border-radius: 12px;
     padding: 12px;
     width: 90%;
+    gap: 12px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
@@ -26,10 +27,20 @@
     width: fit-content;
     align-items: center;
     transform: translate(-50%, -50%);
+    padding: 16px;
+    bottom: 0;
+    background-color: white;
+    border-radius: 12px;
 
     span{
         width: 70px;
         display: flex;
         justify-content: center;
+    }
+}
+
+@media(max-width: 720px){
+    .allvideos-container{
+        padding-bottom: 140px;
     }
 }

@@ -1,6 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { BackendmainService } from 'src/app/services/backendmain.service';
+import { LoadingService } from 'src/app/services/loading.service';
 
 @Component({
   selector: 'app-uploadcontainer',
@@ -25,7 +26,7 @@ export class UploadcontainerComponent {
 
   submitted: boolean = false;
 
-  constructor(private fb: FormBuilder, private backend: BackendmainService) { }
+  constructor(private fb: FormBuilder, private backend: BackendmainService, private loading: LoadingService) { }
 
   ngOnInit() {
     this.uploadVideoForm = this.fb.group({
@@ -38,6 +39,7 @@ export class UploadcontainerComponent {
     this.submitted = true;
     if (this.selectedFile && this.uploadVideoForm.valid) {
       this.resetErrors();
+      this.loading.setLoading(true);
       const formData = new FormData();
       formData.append('title', this.uploadVideoForm.get('title')!.value);
       formData.append('description', this.uploadVideoForm.get('description')!.value);
@@ -49,6 +51,7 @@ export class UploadcontainerComponent {
       } catch (error) {
         this.error = true;
       }
+      this.loading.setLoading(false);
     }
   }
 

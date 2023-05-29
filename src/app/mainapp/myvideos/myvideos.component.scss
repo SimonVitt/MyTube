@@ -7,6 +7,7 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
     position: relative;
+    gap: 12px;
 }
 
 :host{
@@ -22,14 +23,23 @@
     position: absolute;
     right: 50%;
     left: 50%;
-    bottom: 40px;
     width: fit-content;
     align-items: center;
     transform: translate(-50%, -50%);
+    padding: 16px;
+    bottom: 0;
+    background-color: white;
+    border-radius: 12px;
 
     span{
         width: 70px;
         display: flex;
         justify-content: center;
+    }
+}
+
+@media(max-width: 720px){
+    .allvideos-container{
+        padding-bottom: 140px;
     }
 }

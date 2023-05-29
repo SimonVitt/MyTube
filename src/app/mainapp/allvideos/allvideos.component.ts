@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 import { VideoOverview } from 'src/app/interfaces/videooverview';
 import { BackendmainService } from 'src/app/services/backendmain.service';
+import { DataServiceService } from '../services/data-service.service';
 
 @Component({
   selector: 'app-allvideos',
@@ -13,18 +15,21 @@ export class AllvideosComponent {
 
   allVideos!: VideoOverview[];
 
-  constructor(private backend: BackendmainService){}
+  constructor(private dataService: DataServiceService, private router: Router) { }
 
-  async ngOnInit(){
-    const allVidObject = await this.backend.getAllVideos(this.currentPage) as any;
-    this.totalNumberPages = allVidObject.results.length > 0 ? Math.ceil(allVidObject.count / allVidObject.results.length) : 1;
-    this.allVideos = allVidObject.results as VideoOverview[];
+  async ngOnInit() {
+    this.dataService.allVideosSubject.subscribe((response) => {
+      if(response){
+        this.totalNumberPages = response.results.length > 0 ? Math.ceil(response.count / response.results.length) : 1;
+        this.allVideos = response.results as VideoOverview[];
+      }
+    });
+    this.dataService.triggerAllVideos(this.currentPage);
   }
 
-  async changePage(direction: string){
+  async changePage(direction: string) {
     this.currentPage += (direction === 'previous' ? -1 : 1);
-    const allVidObject = await this.backend.getAllVideos(this.currentPage) as any;
-    this.allVideos = allVidObject.results as VideoOverview[];
+    this.dataService.triggerAllVideos(this.currentPage);
   }
 
 }

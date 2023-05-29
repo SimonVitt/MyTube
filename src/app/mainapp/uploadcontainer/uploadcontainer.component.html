@@ -3,7 +3,7 @@
     <form (submit)="uploadVideo()" [formGroup]="uploadVideoForm">
         <div class="input-container">
             <input placeholder="Title" formControlName="title">
-            <p style="margin-bottom: 10px;" *ngIf="uploadVideoForm.get('title')!.errors && (uploadVideoForm.get('title')!.touched || submitted)" class="error nomargin-top">Enter a description with at least 8 letters...</p>
+            <p style="margin-bottom: 10px;" *ngIf="uploadVideoForm.get('title')!.errors && (uploadVideoForm.get('title')!.touched || submitted)" class="error nomargin-top">Enter a title with at least 8 letters...</p>
             <p style="margin-bottom: 10px;" *ngIf="!(uploadVideoForm.get('title')!.errors && (uploadVideoForm.get('title')!.touched || submitted))" class="nomargin-top error-placeholder">Placeholder</p>
         </div>
         <div class="input-container">
@@ -13,7 +13,7 @@
         </div>
         <div class="input-container">
             <label for="file-upload" class="custom-file-upload" style="width: 80%;">
-                <i class="fa fa-cloud-upload"></i> <span *ngIf="!selectedFile">Upload your Video</span> <span *ngIf="selectedFile">{{fileInput.value}}</span>
+                <i class="fa fa-cloud-upload"></i> <span *ngIf="!selectedFile">Upload your Video(mp4)</span> <span *ngIf="selectedFile">{{fileInput.value}}</span>
             </label>
             <input id="file-upload"  style="cursor: pointer;" #fileInput type="file" (change)="onFileSelected($event)"/>
             <p style="margin-bottom: 10px;" *ngIf="(!selectedFile && submitted) || wrongFileType" class="error nomargin-top">Please select a Videofile(mp4)!</p>

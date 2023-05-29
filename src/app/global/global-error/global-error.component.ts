@@ -16,7 +16,6 @@ export class GlobalErrorComponent {
 
   closePopUp(){
     this.showErrorEvent.emit(false);
-    this.authService.logout();
   }
 
   stopPropagation(event: Event) {

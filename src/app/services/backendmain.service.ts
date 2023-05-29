@@ -26,4 +26,8 @@ export class BackendmainService {
   getVideoById(id: number){
     return lastValueFrom(this.http.get(this.BASE_URL + `/api/v1/videos/${id}`));
   }
+
+  deleteMyVideo(id: number){
+    return lastValueFrom(this.http.delete(this.BASE_URL + `/api/v1/myvideos/${id}`));    
+  }
 }
