@@ -36,6 +36,8 @@ export class ResetPwComponent {
         await this.backend.forgotPassword(formData);
         this.success = true;  
         this.emailForm.get('email')?.setValue('');
+        this.emailForm.markAsUntouched();
+        this.submitted = false;
       } catch (error) {
         this.error = true;
       }

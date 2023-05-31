@@ -33,7 +33,6 @@ export class AuthService {
       await this.backend.logout(refreshToken!);
       this.router.navigateByUrl('login');
     } catch (error) {
-      console.log('Logout failed on');
       this.router.navigateByUrl('login');
     }
   }

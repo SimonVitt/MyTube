@@ -14,10 +14,10 @@
                 </select>
             </div>
             <div class="written-details">
-                <h2>{{ videoDetails.title }}</h2>
-                <div>
-                    <span>{{ videoDetails.author.username }}</span>
-                    <span>{{ videoDetails.created_at | dateFormat }}</span>
+                <h2 style="margin-top: 0;">{{ videoDetails.title }}</h2>
+                <div style="margin-bottom: 12px;">
+                    <span>von <strong>{{ videoDetails.author.username }}</strong></span>
+                    <span style="font-style: italic;">{{ videoDetails.created_at | dateFormat }}</span>
                 </div>
                 <span>{{ videoDetails.description }}</span>
             </div>

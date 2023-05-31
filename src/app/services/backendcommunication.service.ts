@@ -10,7 +10,8 @@ interface RefreshTokenRequest {
   providedIn: 'root'
 })
 export class BackendcommunicationService {
-  BASE_URL = 'http://127.0.0.1:8000';
+  //BASE_URL = 'http://127.0.0.1:8000';
+  BASE_URL = 'https://mytube.backendtest-vitt.de';
 
   constructor(private http: HttpClient) { }
 

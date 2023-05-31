@@ -27,7 +27,6 @@ export class SuccessfullCreatedComponent {
     const body = new FormData();
     body.append('token', token);
     this.backend.verifyUser(body).then(response => {
-      console.log(response);
       this.success = true;
       this.loadingService.setLoading(false);
     }).catch(response => {
