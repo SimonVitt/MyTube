@@ -7,7 +7,6 @@ import { lastValueFrom } from 'rxjs';
 })
 export class BackendmainService {
 
-  //BASE_URL = 'http://127.0.0.1:8000';
   BASE_URL = 'https://mytube.backendtest-vitt.de';
 
   constructor(private http: HttpClient) { }
