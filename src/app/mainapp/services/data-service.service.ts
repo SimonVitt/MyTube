@@ -14,12 +14,12 @@ export class DataServiceService {
   constructor(private backend: BackendmainService) { }
 
   async triggerAllVideos(page: number){
-    const response = await this.backend.getAllVideos(page) as any;
+    const response = await this.backend.getAllVideos(page);
     this.allVideosSubject.next(response);
   }
 
   async triggerMyVideos(page: number){
-    const response = await this.backend.getMyVideos(page) as any;
+    const response = await this.backend.getMyVideos(page);
     this.myVideosSubject.next(response);
   }
 }
