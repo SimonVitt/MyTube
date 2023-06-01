@@ -23,7 +23,7 @@ export class AuthService {
     localStorage.setItem('publicKey', data.publickey)
     this.setTokens(data.tokens);
     this.loadingService.setLoading(false);
-    this.router.navigateByUrl('main/videos');
+    this.router.navigateByUrl('home/videos');
   }
 
   async logout() {

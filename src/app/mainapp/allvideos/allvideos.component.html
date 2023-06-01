@@ -1,5 +1,5 @@
 <div class="allvideos-container">
-    <app-small-vid-container [routerLink]="['/main/video', video.id]" *ngFor="let video of allVideos" [video]="video"></app-small-vid-container>
+    <app-small-vid-container [routerLink]="['/home/video', video.id]" *ngFor="let video of allVideos" [video]="video"></app-small-vid-container>
     <div class="pages">
         <button [disabled]="1 >= currentPage" (click)="changePage('previous')">Previous</button>
         <span>{{ currentPage }} / {{ totalNumberPages }}</span>
