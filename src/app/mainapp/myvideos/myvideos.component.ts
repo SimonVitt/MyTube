@@ -11,6 +11,7 @@ import { DataServiceService } from '../services/data-service.service';
 export class MyvideosComponent {
   currentPage: number = 1;
   totalNumberPages!: number;
+  videosPerPage: number = 4;
 
   myVideos!: VideoOverview[];
 
@@ -19,7 +20,7 @@ export class MyvideosComponent {
   async ngOnInit(){
     this.dataService.myVideosSubject.subscribe((response) => {
       if(response){
-        this.totalNumberPages = response.results.length > 0 ? Math.ceil(response.count / response.results.length) : 1;
+        this.totalNumberPages = response.results.length > 0 ? Math.ceil(response.count / this.videosPerPage) : 1;
         this.myVideos = response.results as VideoOverview[];
       }
     })
